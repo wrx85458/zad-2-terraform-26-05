@@ -14,12 +14,13 @@ jobs:
 
     services:
       docker:
-        image: docker:19.03.12
+        image: localstack/localstack
         options: --privileged
         ports:
           - 4566:4566
         env:
           SERVICES: s3
+          DEFAULT_REGION: us-east-1
           DEBUG: 1
 
     steps:
