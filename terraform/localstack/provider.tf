@@ -5,6 +5,6 @@ provider "aws" {
   s3_force_path_style         = true
 
   endpoints {
-    s3             = "http://localhost:4566"
+    s3             = "http://localhost:4567"  # Change the port to 4567
   }
 }

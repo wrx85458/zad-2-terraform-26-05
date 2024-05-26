@@ -4,10 +4,8 @@ services:
   localstack:
     image: localstack/localstack
     ports:
-      - "4566:4566"
+      - "4567:4566"  # Change the host port to 4567
     environment:
       - SERVICES=s3
+      - DEFAULT_REGION=us-east-1
       - DEBUG=1
-      - DATA_DIR=/tmp/localstack/data
-    volumes:
-      - "./localstack:/tmp/localstack"
