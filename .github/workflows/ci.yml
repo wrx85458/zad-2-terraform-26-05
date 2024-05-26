@@ -17,7 +17,7 @@ jobs:
         image: localstack/localstack
         options: --privileged
         ports:
-          - 4566:4566
+          - 4567:4566
         env:
           SERVICES: s3
           DEFAULT_REGION: us-east-1
@@ -35,6 +35,11 @@ jobs:
     - name: Run LocalStack
       run: |
         docker-compose -f terraform/localstack/docker-compose.yml up -d
+
+    - name: Export AWS Credentials
+      run: |
+        echo "AWS_ACCESS_KEY_ID=mock_access_key" >> $GITHUB_ENV
+        echo "AWS_SECRET_ACCESS_KEY=mock_secret_key" >> $GITHUB_ENV
 
     - name: Initialize Terraform
       working-directory: terraform/localstack
